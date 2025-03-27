@@ -5,9 +5,11 @@
 
 <PageTitle>My CPD</PageTitle>
 
-<MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
+<MudText Typo="Typo.h6" Class="mb-2">Continuing Professional Development (CPD) Record</MudText>
+
+<MudText Typo="Typo.subtitle1" Class="mb-4"> <b>Your Courses / Activities Overview</b>
 </MudText>
-<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
     <HeaderContent>
         <MudTh>Name</MudTh>
         <MudTh>Full Name</MudTh>
@@ -24,6 +26,7 @@
 
 @code {
     private bool _loading = false;
+    private bool striped = true;
     private int TargetPeople = 5;
     private IaCpdRecord[]? iaCpdRecords;
 

@@ -32,7 +32,7 @@ else
 
                 </MudStack>
             </MudPaper>
-            
+
             @*Test Purpose
             <MudText>@iaCpdPercentage</MudText>
             <MudText>@TargetPeople</MudText> *@
@@ -40,7 +40,7 @@ else
 
             <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
             </MudText>
-            <MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+            <MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
@@ -81,7 +81,7 @@ else
 
             <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</b>
             </MudText>
-            <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+            <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
@@ -102,7 +102,8 @@ else
 
 @code {
     private bool _loading = false;
-    private int TargetPeople = 5;
+    private bool striped = true;
+    private int TargetPeople = 10;
     private double mpfaCpdPercentage => TargetPeople == 0 ? 0 : ((mpfaCpdRecords?.Count() ?? 0) / (double)TargetPeople) *
     100;
     private double iaCpdPercentage => TargetPeople == 0 ? 0 : ((iaCpdRecords?.Count() ?? 0) / (double)TargetPeople) * 100;
