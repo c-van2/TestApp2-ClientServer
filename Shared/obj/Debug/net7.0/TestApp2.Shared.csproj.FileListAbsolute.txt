@@ -1,0 +1,11 @@
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\bin\Debug\net7.0\TestApp2.Shared.deps.json
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\bin\Debug\net7.0\TestApp2.Shared.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\bin\Debug\net7.0\TestApp2.Shared.pdb
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.AssemblyInfoInputs.cache
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.AssemblyInfo.cs
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.csproj.CoreCompileInputs.cache
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\refint\TestApp2.Shared.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\TestApp2.Shared.pdb
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Shared\obj\Debug\net7.0\ref\TestApp2.Shared.dll
