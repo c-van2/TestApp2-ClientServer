@@ -1,6 +1,7 @@
 @page "/teamcpd"
 @using TestApp2.Shared
 @inject HttpClient Http
+@using MudBlazor
 
 <PageTitle>Team CPD</PageTitle>
 
@@ -37,32 +38,25 @@ else
         </tbody>
     </table>
 
-    <h4>MPFA CPD Records</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Full Name</th>
-                <th>Total Hours</th>
-                <th>Core</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var record in mpfaCpdRecords)
-            {
-                <tr>
-                    <td>@record.Name</td>
-                    <td>@record.FullName</td>
-                    <td>@record.TotalHours</td>
-                    <td>@record.Core</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading"
+          LoadingProgressColor="Color.Info">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Full Name</MudTh>
+        <MudTh>Total Hours (including Core)</MudTh>
+        <MudTh>Core</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+        <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
+        <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
+    </RowTemplate>
+</MudTable>
 }
 
-
 @code {
+    private bool _loading = false;
     private IaCpdRecord[]? iaCpdRecords;
     private MpfaCpdRecord[]? mpfaCpdRecords;
 
