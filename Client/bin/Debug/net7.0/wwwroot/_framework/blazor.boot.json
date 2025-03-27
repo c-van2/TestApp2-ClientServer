@@ -1,7 +1,7 @@
 {
   "entryAssembly": "TestApp2.Client",
   "resources": {
-    "hash": "sha256-+rQl/0iu2z/mdTDZhze/2Z+WLlAwcqBu6CLl0nPp9y8=",
+    "hash": "sha256-JVeiigWf6bS6a35jYL5eEdXcecj3G0zHidLNqvN9AqE=",
     "runtime": {
       "dotnet.7.0.20.bikz7cij1x.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -202,12 +202,12 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "TestApp2.Shared.dll": "sha256-PXVDWg/XGRedoo0OqRavz4xmILR+L6BSCpP6oPQbOt4=",
-      "TestApp2.Client.dll": "sha256-9HFdN2/OYahLXy1IDNY235ShBWSXetgd4W7RSYqZicU="
+      "TestApp2.Shared.dll": "sha256-p0DuVGYK0zcPK3sM0O+0VKOXoerYys0GMt9KViAYGZM=",
+      "TestApp2.Client.dll": "sha256-TxBhJdxO0394d/jxJANRTkKf9CpTr1GzIKFrFIbo050="
     },
     "pdb": {
-      "TestApp2.Shared.pdb": "sha256-SPVedpHUz41wKSI+pIp250P+YuTnxoBRsXNIuCwtW6Q=",
-      "TestApp2.Client.pdb": "sha256-Bu0Q+fYPz09zrEWflNFej+UiuiDsXRkEbkGkE/YXvbo="
+      "TestApp2.Shared.pdb": "sha256-Xmpv4lZv/E03+xWHI1cRPLvA58GXDfiq+2LJJv8+tPA=",
+      "TestApp2.Client.pdb": "sha256-EeRcwKbnCh8+O/IdxtLMA3AVqomLNrRfyGFTTWQkQuI="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

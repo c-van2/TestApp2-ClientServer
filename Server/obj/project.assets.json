@@ -435,7 +435,6 @@
       "MudBlazor/8.3.0": {
         "type": "package",
         "build": {
-          "build/MudBlazor.targets": {},
           "buildTransitive/MudBlazor.props": {}
         },
         "buildMultiTargeting": {
@@ -1299,7 +1298,6 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 7.0.14",
-      "MudBlazor >= 8.3.0",
       "TestApp2.Client >= 1.0.0",
       "TestApp2.Shared >= 1.0.0"
     ]
@@ -1364,10 +1362,6 @@
           "Microsoft.AspNetCore.Components.WebAssembly.Server": {
             "target": "Package",
             "version": "[7.0.14, )"
-          },
-          "MudBlazor": {
-            "target": "Package",
-            "version": "[8.3.0, )"
           }
         },
         "imports": [
