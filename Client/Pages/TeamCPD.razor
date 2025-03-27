@@ -18,16 +18,21 @@ else
             </MudText>
 
             <MudPaper Elevation="2" Class="p-4" Style="max-width: 30vw;">
-                <MudStack Row="true">
-                    <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
-                        Value="@iaCpdPercentage" />
-                    <MudStack Justify="Justify.Center" Spacing="0">
-                        <MudText Typo="Typo.body1"><b>WeFire</b></MudText>
+                <MudStack Row="true" Justify="Justify.SpaceBetween" Align="Align.Center">
+
+                    <!-- Left Side: Text Group -->
+                    <MudStack Spacing="0">
+                        <MudText Typo="Typo.h5"><b>WeFire</b></MudText>
                         <MudText Typo="Typo.body2">IA CPD Achievement</MudText>
                     </MudStack>
+
+                    <!-- Right Side: Circular Progress -->
+                    <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
+                        Value="@iaCpdPercentage" />
+
                 </MudStack>
             </MudPaper>
-
+            
             @*Test Purpose
             <MudText>@iaCpdPercentage</MudText>
             <MudText>@TargetPeople</MudText> *@
@@ -57,17 +62,18 @@ else
             </MudText>
 
             <MudPaper Elevation="2" Class="p-4" Style="max-width: 30vw;">
-                <MudStack Row="true">
+                <MudStack Row="true" Justify="Justify.SpaceBetween" Align="Align.Center">
 
-                    <MudStack Justify="Justify.Center" Spacing="0">
-                        <MudText Typo="Typo.body1"><b>WeFire</b></MudText>
+                    <!-- Left Side: Text Group -->
+                    <MudStack Spacing="0">
+                        <MudText Typo="Typo.h5"><b>WeFire</b></MudText>
                         <MudText Typo="Typo.body2">MPFA CPD Achievement</MudText>
                     </MudStack>
 
-                    <MudStack Justify="Justify.FlexEnd">
-                        <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
-                            Value="@mpfaCpdPercentage" />
-                    </MudStack>
+                    <!-- Right Side: Circular Progress -->
+                    <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
+                        Value="@mpfaCpdPercentage" />
+
                 </MudStack>
             </MudPaper>
 
