@@ -4,56 +4,54 @@
 @using MudBlazor
 
 <PageTitle>Team CPD</PageTitle>
+<MudContainer>
+    <!-- 標題 -->
+    <MudText Typo="Typo.h4" Class="mb-2">Team CPD</MudText>
+    <MudText Typo="Typo.body1" Class="mb-4">This component demonstrates fetching data from the server.</MudText>
 
-<h1>Team CPD</h1>
+    @if (iaCpdRecords == null || mpfaCpdRecords == null)
+    {
+        <MudProgressLinear Indeterminate Color="Color.Primary" />
+    }
+    else
+    {
+        <!-- IA CPD Records -->
+        <MudText Typo="Typo.h5" Class="mt-4">IA CPD Records</MudText>
+        <MudTable Items="@iaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Full Name</MudTh>
+                <MudTh>Total Hours</MudTh>
+                <MudTh>Compulsory</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
+                <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+            </RowTemplate>
+        </MudTable>
 
-<p>This component demonstrates fetching data from the server.</p>
+        <!-- MPFA CPD Records -->
+        <MudText Typo="Typo.h5" Class="mt-4">MPFA CPD Records</MudText>
+        <MudTable Items="@mpfaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+            <HeaderContent>
+                <MudTh>Name</MudTh>
+                <MudTh>Full Name</MudTh>
+                <MudTh>Total Hours (including Core)</MudTh>
+                <MudTh>Core</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
+                <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+</MudContainer>
 
-@if (iaCpdRecords == null || mpfaCpdRecords == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <h4>IA CPD Records</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Full Name</th>
-                <th>Total Hours</th>
-                <th>Compulsory</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var record in iaCpdRecords)
-            {
-                <tr>
-                    <td>@record.Name</td>
-                    <td>@record.FullName</td>
-                    <td>@record.TotalHours</td>
-                    <td>@record.Compulsory</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-    <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading"
-          LoadingProgressColor="Color.Info">
-    <HeaderContent>
-        <MudTh>Name</MudTh>
-        <MudTh>Full Name</MudTh>
-        <MudTh>Total Hours (including Core)</MudTh>
-        <MudTh>Core</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Name">@context.Name</MudTd>
-        <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-        <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
-        <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
-    </RowTemplate>
-</MudTable>
-}
 
 @code {
     private bool _loading = false;
