@@ -1,0 +1,74 @@
+@page "/teamcpd"
+@using TestApp2.Shared
+@inject HttpClient Http
+
+<PageTitle>Team CPD</PageTitle>
+
+<h1>Team CPD</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (iaCpdRecords == null || mpfaCpdRecords == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h4>IA CPD Records</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Full Name</th>
+                <th>Total Hours</th>
+                <th>Compulsory</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in iaCpdRecords)
+            {
+                <tr>
+                    <td>@record.Name</td>
+                    <td>@record.FullName</td>
+                    <td>@record.TotalHours</td>
+                    <td>@record.Compulsory</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h4>MPFA CPD Records</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Full Name</th>
+                <th>Total Hours</th>
+                <th>Core</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in mpfaCpdRecords)
+            {
+                <tr>
+                    <td>@record.Name</td>
+                    <td>@record.FullName</td>
+                    <td>@record.TotalHours</td>
+                    <td>@record.Core</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    private IaCpdRecord[]? iaCpdRecords;
+    private MpfaCpdRecord[]? mpfaCpdRecords;
+
+    protected override async Task OnInitializedAsync()
+    {
+        iaCpdRecords = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
+        mpfaCpdRecords = await Http.GetFromJsonAsync<MpfaCpdRecord[]>("TeamCPD/MPFAcpd");
+    }
+}

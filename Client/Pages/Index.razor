@@ -1,6 +1,4 @@
 ﻿@page "/"
-@inject HttpClient Http
-@using TestApp2.Shared
 
 <PageTitle>Index</PageTitle>
 
@@ -13,46 +11,4 @@ Welcome to your new app. <br />
     <MudButton Variant="Variant.Filled">Hello World</MudButton>
 </div>
 
-
 @*<SurveyPrompt Title="How is Blazor working for you?" />*@
-
-@if (forecasts == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
-@code {
-    private WeatherForecast[]? forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast");
-    }
-}
-
-
-
