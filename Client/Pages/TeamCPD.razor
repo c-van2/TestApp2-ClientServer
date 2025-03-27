@@ -18,27 +18,11 @@ else
             </MudText>
             <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</MudText>
 
-            <!-- ✅ Team Info Card -->
-            <MudCard Elevation="3" Class="mb-4 p-4">
-                <MudCardContent>
-                    <div class="d-flex align-center">
-                        <!-- 🔹 Logo (可換成 MudAvatar 或 MudImage) -->
-                        <MudImage Src="images/sweden.jpg" Width="200" Height="150" Alt="Swedish Farm House" Elevation="25" Class="rounded-lg ma-4"/>
+            <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="@iaCpdPercentage" />
 
-                        <div>
-                            <MudText Typo="Typo.h6"><b>WeFire</b></MudText>
-                        </div>
-                    </div>
+            <MudText>@iaCpdPercentage</MudText>
+            <MudText>@TargetPeople</MudText>
 
-                    <MudText Typo="Typo.h6" Class="mt-2">IA CPD Achievement</MudText>
-
-                    <div class="d-flex align-center">
-                        <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4"
-                            Value="80" />
-                        <MudText Typo="Typo.body1" Class="ml-2">80 / 120</MudText>
-                    </div>
-                </MudCardContent>
-            </MudCard>
 
             <MudTable Items="@iaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
                 <HeaderContent>
@@ -61,6 +45,9 @@ else
             <MudText Typo="Typo.h6" Class="mb-2">Your Team MPFA CPD Record (Assessment Period 1 Jan 2025 - 31 Dec 2025)
             </MudText>
             <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</MudText>
+            
+            <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="@mpfaCpdPercentage" />
+            <MudText>@mpfaCpdPercentage</MudText>
 
             <MudTable Items="@mpfaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
                 <HeaderContent>
@@ -85,6 +72,11 @@ else
 
 @code {
     private bool _loading = false;
+    private int TargetPeople = 5;
+    private double mpfaCpdPercentage => TargetPeople == 0 ? 0 : ((mpfaCpdRecords?.Count() ?? 0) / (double)TargetPeople) *
+    100;
+    private double iaCpdPercentage => TargetPeople == 0 ? 0 : ((iaCpdRecords?.Count() ?? 0) / (double)TargetPeople) * 100;
+
     private IaCpdRecord[]? iaCpdRecords;
     private MpfaCpdRecord[]? mpfaCpdRecords;
 
