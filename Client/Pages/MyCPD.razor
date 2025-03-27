@@ -7,9 +7,27 @@
 
 <MudText Typo="Typo.h6" Class="mb-2">Continuing Professional Development (CPD) Record</MudText>
 
-<MudText Typo="Typo.subtitle1" Class="mb-4"> <b>Your Courses / Activities Overview</b>
-</MudText>
-<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
+<MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+    <HeaderContent>
+        <MudTh></MudTh>
+        <MudTh>Total Hours including Compulsory</MudTh>
+        <MudTh>Compulsory#</MudTh>
+        <MudTh>Total Hours including Core</MudTh>
+        <MudTh>Core</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
+        <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
+        <MudTd DataLabel="Compulsory#">@context.IaComp</MudTd>
+        <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
+        <MudTd DataLabel="Core">@context.MpfaComp</MudTd>
+    </RowTemplate>
+</MudTable>
+
+<br />
+<MudText Typo="Typo.subtitle1" Class="mb-4"> <b>Your Courses / Activities Overview</b></MudText>
+<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary"
+    Style="overflow-x: auto;">
     <HeaderContent>
         <MudTh>Name</MudTh>
         <MudTh>Full Name</MudTh>
@@ -29,9 +47,11 @@
     private bool striped = true;
     private int TargetPeople = 5;
     private IaCpdRecord[]? iaCpdRecords;
+    private MyCpdRecord[]? myCpdRecords;
 
     protected override async Task OnInitializedAsync()
     {
         iaCpdRecords = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
+        myCpdRecords = await Http.GetFromJsonAsync<MyCpdRecord[]>("MyCPD/MYcpd");
     }
 }
