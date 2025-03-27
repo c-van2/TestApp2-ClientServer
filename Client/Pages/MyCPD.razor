@@ -1,0 +1,34 @@
+@page "/mycpd"
+@using TestApp2.Shared
+@inject HttpClient Http
+@using MudBlazor
+
+<PageTitle>My CPD</PageTitle>
+
+<MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
+</MudText>
+<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Full Name</MudTh>
+        <MudTh>Total Hours</MudTh>
+        <MudTh>Compulsory</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+        <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
+        <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private bool _loading = false;
+    private int TargetPeople = 5;
+    private IaCpdRecord[]? iaCpdRecords;
+
+    protected override async Task OnInitializedAsync()
+    {
+        iaCpdRecords = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
+    }
+}
