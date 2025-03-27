@@ -11,20 +11,31 @@
 }
 else
 {
-    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
+    <MudTabs xs="12" md="4" Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
         <!-- IA CPD Records -->
         <MudTabPanel Text="IA CPD Outstanding">
             <MudText Typo="Typo.h6" Class="mb-2">Your Team IA CPD Record (Assessment Period 1 Aug 2024 - 31 Jul 2025)
             </MudText>
-            <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</MudText>
 
-            <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="@iaCpdPercentage" />
+            <MudPaper Elevation="2" Class="p-4" Style="max-width: 30vw;">
+                <MudStack Row="true">
+                    <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
+                        Value="@iaCpdPercentage" />
+                    <MudStack Justify="Justify.Center" Spacing="0">
+                        <MudText Typo="Typo.body1"><b>WeFire</b></MudText>
+                        <MudText Typo="Typo.body2">IA CPD Achievement</MudText>
+                    </MudStack>
+                </MudStack>
+            </MudPaper>
 
+            @*Test Purpose
             <MudText>@iaCpdPercentage</MudText>
-            <MudText>@TargetPeople</MudText>
+            <MudText>@TargetPeople</MudText> *@
+            <br />
 
-
-            <MudTable Items="@iaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+            <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
+            </MudText>
+            <MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
@@ -44,12 +55,27 @@ else
         <MudTabPanel Text="MPFA CPD Outstanding">
             <MudText Typo="Typo.h6" Class="mb-2">Your Team MPFA CPD Record (Assessment Period 1 Jan 2025 - 31 Dec 2025)
             </MudText>
-            <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</MudText>
-            
-            <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4" Value="@mpfaCpdPercentage" />
-            <MudText>@mpfaCpdPercentage</MudText>
 
-            <MudTable Items="@mpfaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+            <MudPaper Elevation="2" Class="p-4" Style="max-width: 30vw;">
+                <MudStack Row="true">
+
+                    <MudStack Justify="Justify.Center" Spacing="0">
+                        <MudText Typo="Typo.body1"><b>WeFire</b></MudText>
+                        <MudText Typo="Typo.body2">MPFA CPD Achievement</MudText>
+                    </MudStack>
+
+                    <MudStack Justify="Justify.FlexEnd">
+                        <MudProgressCircular Color="Color.Success" Rounded="true" Size="Size.Large" StrokeWidth="4"
+                            Value="@mpfaCpdPercentage" />
+                    </MudStack>
+                </MudStack>
+            </MudPaper>
+
+            <br />
+
+            <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</b>
+            </MudText>
+            <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
@@ -66,8 +92,6 @@ else
         </MudTabPanel>
     </MudTabs>
 }
-
-
 
 
 @code {
