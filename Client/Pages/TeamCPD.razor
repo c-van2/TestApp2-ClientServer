@@ -4,52 +4,82 @@
 @using MudBlazor
 
 <PageTitle>Team CPD</PageTitle>
-<MudContainer>
-    <!-- 標題 -->
-    <MudText Typo="Typo.h4" Class="mb-2">Team CPD</MudText>
-    <MudText Typo="Typo.body1" Class="mb-4">This component demonstrates fetching data from the server.</MudText>
 
-    @if (iaCpdRecords == null || mpfaCpdRecords == null)
-    {
-        <MudProgressLinear Indeterminate Color="Color.Primary" />
-    }
-    else
-    {
+@if (iaCpdRecords == null || mpfaCpdRecords == null)
+{
+    <MudProgressLinear Indeterminate Color="Color.Primary" />
+}
+else
+{
+    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6">
         <!-- IA CPD Records -->
-        <MudText Typo="Typo.h5" Class="mt-4">IA CPD Records</MudText>
-        <MudTable Items="@iaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
-            <HeaderContent>
-                <MudTh>Name</MudTh>
-                <MudTh>Full Name</MudTh>
-                <MudTh>Total Hours</MudTh>
-                <MudTh>Compulsory</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd DataLabel="Name">@context.Name</MudTd>
-                <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-                <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
-                <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
-            </RowTemplate>
-        </MudTable>
+        <MudTabPanel Text="IA CPD Outstanding">
+            <MudText Typo="Typo.h6" Class="mb-2">Your Team IA CPD Record (Assessment Period 1 Aug 2024 - 31 Jul 2025)
+            </MudText>
+            <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</MudText>
+
+            <!-- ✅ Team Info Card -->
+            <MudCard Elevation="3" Class="mb-4 p-4">
+                <MudCardContent>
+                    <div class="d-flex align-center">
+                        <!-- 🔹 Logo (可換成 MudAvatar 或 MudImage) -->
+                        <MudImage Src="images/sweden.jpg" Width="200" Height="150" Alt="Swedish Farm House" Elevation="25" Class="rounded-lg ma-4"/>
+
+                        <div>
+                            <MudText Typo="Typo.h6"><b>WeFire</b></MudText>
+                        </div>
+                    </div>
+
+                    <MudText Typo="Typo.h6" Class="mt-2">IA CPD Achievement</MudText>
+
+                    <div class="d-flex align-center">
+                        <MudProgressCircular Color="Color.Warning" Rounded="true" Size="Size.Large" StrokeWidth="4"
+                            Value="80" />
+                        <MudText Typo="Typo.body1" Class="ml-2">80 / 120</MudText>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+
+            <MudTable Items="@iaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Full Name</MudTh>
+                    <MudTh>Total Hours</MudTh>
+                    <MudTh>Compulsory</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                    <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
+                    <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
 
         <!-- MPFA CPD Records -->
-        <MudText Typo="Typo.h5" Class="mt-4">MPFA CPD Records</MudText>
-        <MudTable Items="@mpfaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
-            <HeaderContent>
-                <MudTh>Name</MudTh>
-                <MudTh>Full Name</MudTh>
-                <MudTh>Total Hours (including Core)</MudTh>
-                <MudTh>Core</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd DataLabel="Name">@context.Name</MudTd>
-                <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-                <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
-                <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
-            </RowTemplate>
-        </MudTable>
-    }
-</MudContainer>
+        <MudTabPanel Text="MPFA CPD Outstanding">
+            <MudText Typo="Typo.h6" Class="mb-2">Your Team MPFA CPD Record (Assessment Period 1 Jan 2025 - 31 Dec 2025)
+            </MudText>
+            <MudText Typo="Typo.body1" Class="mb-4">List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</MudText>
+
+            <MudTable Items="@mpfaCpdRecords" Hover="true" Dense="true" Breakpoint="Breakpoint.None">
+                <HeaderContent>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Full Name</MudTh>
+                    <MudTh>Total Hours (including Core)</MudTh>
+                    <MudTh>Core</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Full Name">@context.FullName</MudTd>
+                    <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
+                    <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+    </MudTabs>
+}
+
 
 
 
