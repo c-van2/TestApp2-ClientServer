@@ -823,8 +823,6 @@ C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compresse
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\wxi9om39a9.gz
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\vnph283ksk.gz
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\gv5p3gz241.gz
-C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\19sy17ghnp.gz
-C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\hdozrmufqi.gz
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\i5byu7trgz.gz
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\sq6v99z9yk.gz
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\v5xmy37558.gz
@@ -834,3 +832,17 @@ C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\refint\Te
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\TestApp2.Client.pdb
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\ref\TestApp2.Client.dll
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\TestApp2.Client.sourcelink.json
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Localization.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Localization.dll.gz
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\Microsoft.Extensions.Localization.Abstractions.dll.gz
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\wwwroot\_framework\MudBlazor.dll.gz
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\Microsoft.Extensions.Localization.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\bin\Debug\net7.0\MudBlazor.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\6cdtjgmm5g.gz
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\ddgk59ouw1.gz
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\xh7mk25l9p.gz
+c:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\mloojckd5p.gz
+c:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Client\obj\Debug\net7.0\compressed\gxbk27xvuz.gz

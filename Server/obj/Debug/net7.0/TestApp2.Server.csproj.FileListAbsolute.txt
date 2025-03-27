@@ -53,3 +53,7 @@ C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\obj\Debug\net7.0\refint\Te
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\obj\Debug\net7.0\TestApp2.Server.pdb
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\obj\Debug\net7.0\TestApp2.Server.genruntimeconfig.cache
 C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\obj\Debug\net7.0\ref\TestApp2.Server.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\bin\Debug\net7.0\Microsoft.Extensions.Localization.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\bin\Debug\net7.0\Microsoft.Extensions.Localization.Abstractions.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\bin\Debug\net7.0\MudBlazor.dll
+C:\Users\VanessaChan\Desktop\TestApp2\TestApp2\Server\obj\Debug\net7.0\TestApp2.Server.sourcelink.json

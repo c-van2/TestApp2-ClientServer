@@ -1,7 +1,7 @@
 {
   "entryAssembly": "TestApp2.Client",
   "resources": {
-    "hash": "sha256-JVeiigWf6bS6a35jYL5eEdXcecj3G0zHidLNqvN9AqE=",
+    "hash": "sha256-Ai0PC2nvwqj4FhQuyR9+QwaYw6PxMuf2A4vUMrTs/FU=",
     "runtime": {
       "dotnet.7.0.20.bikz7cij1x.js": "sha256-eaJTmow4t8eE7FZMZR5Ja41JMOefGCbIYDTdpclGsac=",
       "dotnet.timezones.blat": "sha256-gbATD5HDsHYtW8vdPYh9iSBY4O5CjvMeCSF5xXWF1xo=",
@@ -27,12 +27,15 @@
       "Microsoft.Extensions.FileProviders.Abstractions.dll": "sha256-Zt6OY6gg/1Tzt9oFOQBkezPvUVkFK4dyM6Pfk+MTUvg=",
       "Microsoft.Extensions.FileProviders.Physical.dll": "sha256-9xkIbIienaRj9Td2MyWYzL9JmVx6CKbGCPrvJ1Pxfn8=",
       "Microsoft.Extensions.FileSystemGlobbing.dll": "sha256-Gm0yiS5fySh2nZXdCRKZIbASK8sSukwjogLc+a9EBZY=",
+      "Microsoft.Extensions.Localization.dll": "sha256-ISH3/t6SDTHRIgCdVpoojnejrc46D+nMqHI5h1Ep+J0=",
+      "Microsoft.Extensions.Localization.Abstractions.dll": "sha256-bn6mdZHE8jDMmYsuA3W5dLp9G1P2z8ukTk7MTSo7G6o=",
       "Microsoft.Extensions.Logging.dll": "sha256-WMsuY8rhtg+vvssGFSR7ZLKhqYPAzOi538IXMoiJ6bI=",
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-7mzUlhcvGxpAVO4h/Tka7P/8IXF9ZsHkGt0fp5aufkU=",
       "Microsoft.Extensions.Options.dll": "sha256-gcHJrSv1wTqvF9SyWTEKcbiShn4mkgfnm9+tRQr4OqY=",
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
       "Microsoft.JSInterop.dll": "sha256-tDUEq1bRgkbwPRKdclDqQy6f2l2zgHm+84KImibIOF8=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-jZp0x8/BJDWy8XWsxYJaiGXW3zObZi90AYiYGjhemMU=",
+      "MudBlazor.dll": "sha256-WuZcTQaiSrU0MSVl/CluAps+e6Fi9gk4Npr+7+uE0zs=",
       "System.IO.Pipelines.dll": "sha256-P/MqD0fCBd5bgTM16JC1QC/Zz7s+CwViyzmDFkBG4/c=",
       "Microsoft.CSharp.dll": "sha256-6V4GfO5zHzzbEf480NtrHxZo3KX5ZAFCJUG6sEqKTp8=",
       "Microsoft.VisualBasic.Core.dll": "sha256-3ypmvZcaGs6rLStwq7m4D+pVXoLIhws2VMHGiwlhlJs=",
@@ -202,12 +205,12 @@
       "mscorlib.dll": "sha256-HYyp9hO+GKFyupcEiY1PxtBBXbHzefsO3Q8RiQTaNCA=",
       "netstandard.dll": "sha256-N5CcC3sLzGBesbmeJAp5bwxABN9u7SwkIO5qfFjzoik=",
       "System.Private.CoreLib.dll": "sha256-bJS1DJmhjP7PvegYG+Z8O9EDtRY78HKinA3LUMVLlSQ=",
-      "TestApp2.Shared.dll": "sha256-p0DuVGYK0zcPK3sM0O+0VKOXoerYys0GMt9KViAYGZM=",
-      "TestApp2.Client.dll": "sha256-TxBhJdxO0394d/jxJANRTkKf9CpTr1GzIKFrFIbo050="
+      "TestApp2.Shared.dll": "sha256-XDJq/ndZ4/sCTC/x0qUb+eltSPq/MaB1HMlGGyB4k4Y=",
+      "TestApp2.Client.dll": "sha256-fmobAiVeMS1lrv0lE977pF48yFB3WVnGdCjZjuLYzqw="
     },
     "pdb": {
-      "TestApp2.Shared.pdb": "sha256-Xmpv4lZv/E03+xWHI1cRPLvA58GXDfiq+2LJJv8+tPA=",
-      "TestApp2.Client.pdb": "sha256-EeRcwKbnCh8+O/IdxtLMA3AVqomLNrRfyGFTTWQkQuI="
+      "TestApp2.Shared.pdb": "sha256-D/TNafv3pfD1hsstjbB4+UbY3u3JM5xgNzkpCI6hHoo=",
+      "TestApp2.Client.pdb": "sha256-gBJoruYwFoS42WECvzyuZnjABxQYhdd37qxBrwXLBWg="
     },
     "runtimeAssets": {
       "dotnet.wasm": {

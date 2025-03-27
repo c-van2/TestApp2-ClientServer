@@ -9,7 +9,6 @@
       "TestApp2.Server/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components.WebAssembly.Server": "7.0.14",
-          "MudBlazor": "8.3.0",
           "TestApp2.Client": "1.0.0",
           "TestApp2.Shared": "1.0.0"
         },
@@ -159,6 +158,28 @@
         }
       },
       "Microsoft.Extensions.FileSystemGlobbing/7.0.0": {},
+      "Microsoft.Extensions.Localization/7.0.7": {
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Localization.Abstractions": "7.0.7",
+          "Microsoft.Extensions.Logging.Abstractions": "7.0.1",
+          "Microsoft.Extensions.Options": "7.0.1"
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Localization.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.723.27408"
+          }
+        }
+      },
+      "Microsoft.Extensions.Localization.Abstractions/7.0.7": {
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.723.27408"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/7.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -207,7 +228,19 @@
           }
         }
       },
-      "MudBlazor/8.3.0": {},
+      "MudBlazor/6.5.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "7.0.14",
+          "Microsoft.AspNetCore.Components.Web": "7.0.14",
+          "Microsoft.Extensions.Localization": "7.0.7"
+        },
+        "runtime": {
+          "lib/net7.0/MudBlazor.dll": {
+            "assemblyVersion": "6.5.0.0",
+            "fileVersion": "6.5.0.0"
+          }
+        }
+      },
       "System.IO.Pipelines/7.0.0": {},
       "System.Text.Encodings.Web/7.0.0": {},
       "System.Text.Json/7.0.0": {
@@ -218,7 +251,7 @@
       "TestApp2.Client/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Components.WebAssembly": "7.0.14",
-          "MudBlazor": "8.3.0",
+          "MudBlazor": "6.5.0",
           "TestApp2.Shared": "1.0.0"
         },
         "runtime": {
@@ -370,6 +403,20 @@
       "path": "microsoft.extensions.filesystemglobbing/7.0.0",
       "hashPath": "microsoft.extensions.filesystemglobbing.7.0.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.Localization/7.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q3+oTx3FpK9Ck1LjUb+2DvSeMXGr9sWsbILJLqdt4J9itlRjTdDXfyuOiNCDOPW8oZAYwquUud+CAL12KoRN4A==",
+      "path": "microsoft.extensions.localization/7.0.7",
+      "hashPath": "microsoft.extensions.localization.7.0.7.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Localization.Abstractions/7.0.7": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sGDLDPl/nK6UQ5A20k/u0gZu5tqK/IHfG5mKW7khMKMUD3zF922NQo2puPeMPrnSgaBO09u4NbLUPuyHK/G7tA==",
+      "path": "microsoft.extensions.localization.abstractions/7.0.7",
+      "hashPath": "microsoft.extensions.localization.abstractions.7.0.7.nupkg.sha512"
+    },
     "Microsoft.Extensions.Logging/7.0.0": {
       "type": "package",
       "serviceable": true,
@@ -412,12 +459,12 @@
       "path": "microsoft.jsinterop.webassembly/7.0.14",
       "hashPath": "microsoft.jsinterop.webassembly.7.0.14.nupkg.sha512"
     },
-    "MudBlazor/8.3.0": {
+    "MudBlazor/6.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DLc1aK8AgSas82AERWLLefWKadIF7HhYhvgO8Y7jYLZe5v1r4v3rX9pzrzTsQkuPGe6y65tob73kM6gael+WdQ==",
-      "path": "mudblazor/8.3.0",
-      "hashPath": "mudblazor.8.3.0.nupkg.sha512"
+      "sha512": "sha512-JNcu0q2Q04bjvVL7fySpmsuTNl7Bb+00FWRRgBDlg2INdRINbWYd8T+SfQY7stVfD2EPF35qocCF8ENh/1aPiA==",
+      "path": "mudblazor/6.5.0",
+      "hashPath": "mudblazor.6.5.0.nupkg.sha512"
     },
     "System.IO.Pipelines/7.0.0": {
       "type": "package",
