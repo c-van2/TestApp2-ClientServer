@@ -26,19 +26,27 @@
 
 <br />
 <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>Your Courses / Activities Overview</b></MudText>
-<MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary"
+<MudTable Items="@myCourseRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary"
     Style="overflow-x: auto;">
     <HeaderContent>
-        <MudTh>Name</MudTh>
-        <MudTh>Full Name</MudTh>
-        <MudTh>Total Hours</MudTh>
-        <MudTh>Compulsory</MudTh>
+        <MudTh>Date Completed</MudTh>
+        <MudTh>Course Code</MudTh>
+        <MudTh>Course / Activity Provider</MudTh>
+        <MudTh>Course / Activity Title</MudTh>
+        <MudTh>IA CPD</MudTh>
+        <MudTh>IA Compulsory</MudTh>
+        <MudTh>MPFA Non-Core</MudTh>
+        <MudTh>MPFA Core</MudTh>
     </HeaderContent>
     <RowTemplate>
-        <MudTd DataLabel="Name">@context.Name</MudTd>
-        <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-        <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
-        <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+        <MudTd DataLabel="Date Completed">@context.DateCompleted.ToString("yyyy-MM-dd")</MudTd>
+        <MudTd DataLabel="Course Code">@context.CourseCode</MudTd>
+        <MudTd DataLabel="Course / Activity Provider">@context.Provider</MudTd>
+        <MudTd DataLabel="Course / Activity Title">@context.CourseTitle</MudTd>
+        <MudTd DataLabel="IA CPD">@context.IaCpd</MudTd>
+        <MudTd DataLabel="IA Compulsory">@context.IaCompulsory</MudTd>
+        <MudTd DataLabel="MPFA Non-Core">@context.MpfaNonCore</MudTd>
+        <MudTd DataLabel="MPFA Core">@context.MpfaCore</MudTd>
     </RowTemplate>
 </MudTable>
 
@@ -48,10 +56,12 @@
     private int TargetPeople = 5;
     private IaCpdRecord[]? iaCpdRecords;
     private MyCpdRecord[]? myCpdRecords;
+    private MyCourseRecord[]? myCourseRecords;
 
     protected override async Task OnInitializedAsync()
     {
         iaCpdRecords = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
         myCpdRecords = await Http.GetFromJsonAsync<MyCpdRecord[]>("MyCPD/MYcpd");
+        myCourseRecords = await Http.GetFromJsonAsync<MyCourseRecord[]>("MyCPD/MYcourse");
     }
 }

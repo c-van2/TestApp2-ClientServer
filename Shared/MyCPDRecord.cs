@@ -11,7 +11,7 @@ public class MyCpdRecord
 
 public class MyCourseRecord
 {
-    public DateTime? DateCompleted { get; set; }
+    public DateTime DateCompleted { get; set; }
     public string CourseCode { get; set; }
     public string Provider { get; set; }
     public string CourseTitle { get; set; }
