@@ -40,18 +40,24 @@ else
 
             <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
             </MudText>
-            <MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
+            <MudTable Items="@iaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped"
+                Color="Color.Tertiary" Style="overflow-x: auto;">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
-                    <MudTh>Total Hours</MudTh>
+                    <MudTh>
+                        <MudTableSortLabel T="IaCpdRecord" SortBy="(IaCpdRecord record) => record.TotalHours">Total Hours
+                        </MudTableSortLabel>
+                    </MudTh>
                     <MudTh>Compulsory</MudTh>
                 </HeaderContent>
                 <RowTemplate>
                     <MudTd DataLabel="Name">@context.Name</MudTd>
                     <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-                    <MudTd DataLabel="Total Hours">@context.TotalHours</MudTd>
-                    <MudTd DataLabel="Compulsory">@context.Compulsory</MudTd>
+                    <MudTd DataLabel="Total Hours"><span
+                            class="@(context.TotalHours > 0 ? "text-danger" : "")"><b>@context.TotalHours</b></span></MudTd>
+                    <MudTd DataLabel="Compulsory"><span
+                            class="@(context.Compulsory > 0 ? "text-danger" : "")"><b>@context.Compulsory</b></span></MudTd>
                 </RowTemplate>
             </MudTable>
         </MudTabPanel>
@@ -81,7 +87,8 @@ else
 
             <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Nov 2025)</b>
             </MudText>
-            <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary" Style="overflow-x: auto;">
+            <MudTable Items="@mpfaCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped"
+                Color="Color.Tertiary" Style="overflow-x: auto;">
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
@@ -91,8 +98,10 @@ else
                 <RowTemplate>
                     <MudTd DataLabel="Name">@context.Name</MudTd>
                     <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-                    <MudTd DataLabel="Total Hours">@context.TotalHours.ToString("0.0")</MudTd>
-                    <MudTd DataLabel="Core">@context.Core.ToString("0.0")</MudTd>
+                    <MudTd DataLabel="Total Hours"><span
+                            class="@(context.TotalHours > 0 ? "text-danger" : "")"><b>@context.TotalHours</b></span></MudTd>
+                    <MudTd DataLabel="Compulsory"><span class="@(context.Core > 0 ? "text-danger" : "")"><b>@context.Core
+                            </b></span></MudTd>
                 </RowTemplate>
             </MudTable>
         </MudTabPanel>
@@ -113,7 +122,11 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        iaCpdRecords = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
-        mpfaCpdRecords = await Http.GetFromJsonAsync<MpfaCpdRecord[]>("TeamCPD/MPFAcpd");
+        var iaData = await Http.GetFromJsonAsync<IaCpdRecord[]>("TeamCPD/IAcpd");
+        var mpfaData = await Http.GetFromJsonAsync<MpfaCpdRecord[]>("TeamCPD/MPFAcpd");
+        @* mpfaCpdRecords = await Http.GetFromJsonAsync<MpfaCpdRecord[]>("TeamCPD/MPFAcpd"); *@
+
+        iaCpdRecords = iaData?.OrderByDescending(r => r.TotalHours).ToArray() ?? Array.Empty<IaCpdRecord>();
+        mpfaCpdRecords = mpfaData?.OrderByDescending(r => r.TotalHours).ToArray() ?? Array.Empty<MpfaCpdRecord>();
     }
 }
