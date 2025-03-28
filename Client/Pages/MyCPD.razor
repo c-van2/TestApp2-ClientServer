@@ -11,17 +11,18 @@
         <MudGrid Spacing="2">
 
             <MudItem xs="2">
-                
+
             </MudItem>
             <!-- IA Section -->
             <MudItem xs="6">
                 <MudText Typo="Typo.subtitle2" Class="mb-1" Style="text-align: left;">Insurance Authority (IA)</MudText>
                 <MudText Typo="Typo.body2" Class="text-error" Style="text-align: left;">DUE on 30 Jun 2025</MudText>
             </MudItem>
-            
+
             <!-- MPFA Section -->
             <MudItem xs="4">
-                <MudText Typo="Typo.subtitle2" Class="mb-1" Style="text-align: left;">Mandatory Provident Fund Schemes Authority (MPFA)</MudText>
+                <MudText Typo="Typo.subtitle2" Class="mb-1" Style="text-align: left;">Mandatory Provident Fund Schemes
+                    Authority (MPFA)</MudText>
                 <MudText Typo="Typo.body2" Class="text-error" Style="text-align: left;">DUE on 30 Nov 2025</MudText>
             </MudItem>
         </MudGrid>
@@ -37,20 +38,67 @@
             <RowTemplate Context="context">
                 <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
                 <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
-                <MudTd DataLabel="Compulsory#">
-                    <span class="@(context.IaComp > 0 ? "text-danger" : "")"><b>@context.IaComp</b></span>
-                </MudTd>
+                <MudTd DataLabel="Compulsory#"><span class="@(context.IaComp > 0 ? "text-danger" : "")"><b>@context.IaComp</b></span></MudTd>
                 <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
-                <MudTd DataLabel="Core">
-                    <span class="@(context.MpfaComp > 0 ? "text-danger" : "")"><b>@context.MpfaComp</b></span>
-                </MudTd>
+                <MudTd DataLabel="Core"><span class="@(context.MpfaComp > 0 ? "text-danger" : "")"><b>@context.MpfaComp</b></span></MudTd>
             </RowTemplate>
         </MudTable>
 
-        <br/>
+        @* <MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Dense="true" Class="mt-4">
+            <HeaderContent>
+                <MudTh></MudTh>
+                <MudTh>Total Hours including Compulsory</MudTh>
+                <MudTh>Compulsory#</MudTh>
+                <MudTh>Total Hours including Core</MudTh>
+                <MudTh>Core</MudTh>
+            </HeaderContent>
+
+
+            <!-- Required Row -->
+            <MudTr>
+                <MudTd><b>Required</b></MudTd>
+                <MudTd>@myCpdRecords.RequiredIaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.RequiredIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.RequiredIaComp</b></span>
+                </MudTd>
+                <MudTd>@myCpdRecords.RequiredMpfaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.RequiredMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.RequiredMpfaComp</b></span>
+                </MudTd>
+            </MudTr>
+
+            <!-- Earned Row -->
+            <MudTr>
+                <MudTd><b>Earned</b></MudTd>
+                <MudTd>@myCpdRecords.EarnedIaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.EarnedIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.EarnedIaComp</b></span>
+                </MudTd>
+                <MudTd>@myCpdRecords.EarnedMpfaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.EarnedMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.EarnedMpfaComp</b></span>
+                </MudTd>
+            </MudTr>
+
+            <!-- Outstanding Row -->
+            <MudTr>
+                <MudTd><b>Outstanding</b></MudTd>
+                <MudTd>@myCpdRecords.OutstandingIaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.OutstandingIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.OutstandingIaComp</b></span>
+                </MudTd>
+                <MudTd>@myCpdRecords.OutstandingMpfaTotal</MudTd>
+                <MudTd><span
+                        class="@(myCpdRecords.OutstandingMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.OutstandingMpfaComp</b></span>
+                </MudTd>
+            </MudTr>
+
+        </MudTable> *@
+
+
+        <br />
         <MudText Typo="Typo.caption" Class="mt-2" Style="color: #666666"># IA compulsory CPD hours on "Ethics or
             Regulations"</MudText>
-
     </MudPaper>
 </MudContainer>
 

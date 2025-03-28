@@ -37,6 +37,7 @@ else
             <MudText>@iaCpdPercentage</MudText>
             <MudText>@TargetPeople</MudText> *@
             <br />
+            @* ServerData="LoadServerData" Loading="@_loading" PageSize="10"  *@
 
             <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>List of Outstanding CPD (Deadline Outstanding 30 Jun 2025)</b>
             </MudText>
@@ -45,19 +46,14 @@ else
                 <HeaderContent>
                     <MudTh>Name</MudTh>
                     <MudTh>Full Name</MudTh>
-                    <MudTh>
-                        <MudTableSortLabel T="IaCpdRecord" SortBy="(IaCpdRecord record) => record.TotalHours">Total Hours
-                        </MudTableSortLabel>
-                    </MudTh>
+                    <MudTh><MudTableSortLabel T="IaCpdRecord" SortBy="(IaCpdRecord record) => record.TotalHours">Total Hours</MudTableSortLabel></MudTh>
                     <MudTh>Compulsory</MudTh>
                 </HeaderContent>
                 <RowTemplate>
                     <MudTd DataLabel="Name">@context.Name</MudTd>
                     <MudTd DataLabel="Full Name">@context.FullName</MudTd>
-                    <MudTd DataLabel="Total Hours"><span
-                            class="@(context.TotalHours > 0 ? "text-danger" : "")"><b>@context.TotalHours</b></span></MudTd>
-                    <MudTd DataLabel="Compulsory"><span
-                            class="@(context.Compulsory > 0 ? "text-danger" : "")"><b>@context.Compulsory</b></span></MudTd>
+                    <MudTd DataLabel="Total Hours"><span class="@(context.TotalHours > 0 ? "text-danger" : "")"><b>@context.TotalHours</b></span></MudTd>
+                    <MudTd DataLabel="Compulsory"><span class="@(context.Compulsory > 0 ? "text-danger" : "")"><b>@context.Compulsory</b></span></MudTd>
                 </RowTemplate>
             </MudTable>
         </MudTabPanel>
@@ -113,12 +109,23 @@ else
     private bool _loading = false;
     private bool striped = true;
     private int TargetPeople = 10;
-    private double mpfaCpdPercentage => TargetPeople == 0 ? 0 : ((mpfaCpdRecords?.Count() ?? 0) / (double)TargetPeople) *
-    100;
+    private double mpfaCpdPercentage => TargetPeople == 0 ? 0 : ((mpfaCpdRecords?.Count() ?? 0) / (double)TargetPeople) * 100;
     private double iaCpdPercentage => TargetPeople == 0 ? 0 : ((iaCpdRecords?.Count() ?? 0) / (double)TargetPeople) * 100;
 
     private IaCpdRecord[]? iaCpdRecords;
     private MpfaCpdRecord[]? mpfaCpdRecords;
+
+    @* private async Task<TableData<IaCpdRecord>> LoadServerData(TableState state)
+{
+    _loading = true;
+
+    var url = $"TeamCPD/IAcpd?pageNumber={state.Page + 1}&pageSize={state.PageSize}";
+
+    var response = await Http.GetFromJsonAsync<TableData<IaCpdRecord>>(url);
+
+    _loading = false;
+    return response ?? new TableData<IaCpdRecord> { Items = new List<IaCpdRecord>(), TotalItems = 0 };
+} *@
 
     protected override async Task OnInitializedAsync()
     {

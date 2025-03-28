@@ -7,6 +7,25 @@ public class MyCpdRecord
     public double IaComp { get; set; }
     public double MpfaTotal { get; set; }
     public double MpfaComp { get; set; }
+
+    // // Required
+    // public double RequiredIaTotal { get; set; }
+    // public double RequiredIaComp { get; set; }
+    // public double RequiredMpfaTotal { get; set; }
+    // public double RequiredMpfaComp { get; set; }
+
+    // // Earned
+    // public double EarnedIaTotal { get; set; }
+    // public double EarnedIaComp { get; set; }
+    // public double EarnedMpfaTotal { get; set; }
+    // public double EarnedMpfaComp { get; set; }
+
+    // // Outstanding
+    // public double OutstandingIaTotal { get; set; }
+    // public double OutstandingIaComp { get; set; }
+    // public double OutstandingMpfaTotal { get; set; }
+    // public double OutstandingMpfaComp { get; set; }
+
 }
 
 public class MyCourseRecord
