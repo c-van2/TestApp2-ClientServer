@@ -4,40 +4,138 @@
 @using MudBlazor
 
 <PageTitle>My CPD</PageTitle>
+@* <MudPaper Class="pa-4 mt-4" Elevation="0">
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard Elevation="0">
+                <MudCardContent>
+                    <MudGrid Spacing="2">
+                        <!-- IA Section -->
+                        <MudItem xs="6">
+                            <MudTypography Color="Primary" Variant="Body1" Bold>
+                                Insurance Authority (IA)
+                            </MudTypography>
+                            <MudTypography Color="Error" Variant="Body2" Bold>
+                                DUE on 30 Jun 2025
+                            </MudTypography>
+                        </MudItem>
+                        <!-- MPFA Section -->
+                        <MudItem xs="6">
+                            <MudTypography Color="Secondary" Variant="Body1" Bold>
+                                Mandatory Provident Fund Schemes Authority (MPFA)
+                            </MudTypography>
+                            <MudTypography Color="Error" Variant="Body2" Bold>
+                                DUE on 30 Nov 2025
+                            </MudTypography>
+                        </MudItem>
+                    </MudGrid>
 
-<MudText Typo="Typo.h6" Class="mb-2">Continuing Professional Development (CPD) Record</MudText>
+                    <MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
+                        <HeaderContent>
+                            <MudTh></MudTh>
+                            <MudTh>Total Hours including Compulsory</MudTh>
+                            <MudTh>Compulsory#</MudTh>
+                            <MudTh>Total Hours including Core</MudTh>
+                            <MudTh>Core</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
+                            <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
+                            <MudTd DataLabel="Compulsory#">@context.IaComp</MudTd>
+                            <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
+                            <MudTd DataLabel="Core">@context.MpfaComp</MudTd>
+                        </RowTemplate>
+                    </MudTable>
 
-<MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None">
-    <HeaderContent>
-        <MudTh></MudTh>
-        <MudTh>Total Hours including Compulsory</MudTh>
-        <MudTh>Compulsory#</MudTh>
-        <MudTh>Total Hours including Core</MudTh>
-        <MudTh>Core</MudTh>
-    </HeaderContent>
-    <RowTemplate>
-        <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
-        <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
-        <MudTd DataLabel="Compulsory#">@context.IaComp</MudTd>
-        <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
-        <MudTd DataLabel="Core">@context.MpfaComp</MudTd>
-    </RowTemplate>
-</MudTable>
+
+                    <MudText Typo="Typo.caption" Class="mt-2 mb-6" Style="color: #666666">
+                        # IA compulsory CPD hours on "Ethics or Regulations"
+                    </MudText>
+
+                    <MudText Typo="Typo.subtitle1" Class="mb-4"><strong>Your Courses / Activities Overview</strong>
+                    </MudText>
+
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudPaper> *@
+
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudPaper Elevation="4" Class="pa-4">
+
+        <MudText Typo="Typo.h6" Class="mb-2">Continuing Professional Development (CPD) Record</MudText>
+        <MudGrid Spacing="2">
+            <!-- IA Section -->
+            <MudItem xs="6">
+                <MudStack Direction="Row" Spacing="2" AlignItems="AlignItems.Center" Class="mb-2">
+                    <MudText Typo="Typo.h6">Insurance Authority (IA)</MudText>
+                    <MudText Typo="Typo.body2" Class="text-error">DUE on 30 Jun 2025</MudText>
+                </MudStack>
+
+                <MudStack Direction="Row" Spacing="2" AlignItems="AlignItems.Center" Class="mb-2">
+                    <MudText Typo="Typo.h6">Mandatory Provident Fund Schemes Authority (MPFA)</MudText>
+                    <MudText Typo="Typo.body2" Class="text-error">DUE on 30 Nov 2025</MudText>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+
+        <MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Dense="true" Bordered="true"
+            Class="mt-4">
+            <HeaderContent>
+                <MudTh></MudTh>
+                <MudTh>Total Hours including Compulsory</MudTh>
+                <MudTh>Compulsory#</MudTh>
+                <MudTh>Total Hours including Core</MudTh>
+                <MudTh>Core</MudTh>
+            </HeaderContent>
+            <RowTemplate Context="context">
+                <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
+                <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
+                <MudTd DataLabel="Compulsory#">
+                    <span class="@(context.IaComp > 0 ? "text-danger" : "")">@context.IaComp</span>
+                </MudTd>
+                <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
+                <MudTd DataLabel="Core">
+                    <span class="@(context.MpfaComp > 0 ? "text-danger" : "")">@context.MpfaComp</span>
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+
+        <MudText Typo="Typo.caption" Class="mt-2" Style="color: #666666"># IA compulsory CPD hours on "Ethics or
+            Regulations"</MudText>
+
+    </MudPaper>
+</MudContainer>
+
 
 <br />
 <MudText Typo="Typo.subtitle1" Class="mb-4"> <b>Your Courses / Activities Overview</b></MudText>
 <MudTable Items="@myCourseRecords" Hover="true" Breakpoint="Breakpoint.None" Striped="@striped" Color="Color.Tertiary"
-    Style="overflow-x: auto;">
+    Style="overflow-x: auto;" SortBy="new Func<MyCourseRecord, object>(x => x.DateCompleted)"
+    SortDirection="SortDirection.Descending" SortLabel="Sort By" FixedHeader="@fixed_header" FixedFooter="@fixed_footer"
+    Height="@(fixed_header || fixed_footer ? "400px" : "")">
     <HeaderContent>
-        <MudTh>Date Completed</MudTh>
-        <MudTh>Course Code</MudTh>
-        <MudTh>Course / Activity Provider</MudTh>
+        <MudTh>
+            <MudTableSortLabel SortBy="new Func<MyCourseRecord, object>(x => x.DateCompleted)">Date Completed
+            </MudTableSortLabel>
+        </MudTh>
+        <MudTh>
+            <MudTableSortLabel SortBy="new Func<MyCourseRecord, object>(x => x.CourseCode)">Course Code
+            </MudTableSortLabel>
+        </MudTh>
+        <MudTh>
+            <MudTableSortLabel SortBy="new Func<MyCourseRecord, object>(x => x.Provider)">Course / Activity Provider
+            </MudTableSortLabel>
+        </MudTh>
         <MudTh>Course / Activity Title</MudTh>
         <MudTh>IA CPD</MudTh>
         <MudTh>IA Compulsory</MudTh>
         <MudTh>MPFA Non-Core</MudTh>
         <MudTh>MPFA Core</MudTh>
     </HeaderContent>
+
     <RowTemplate>
         <MudTd DataLabel="Date Completed">@context.DateCompleted.ToString("yyyy-MM-dd")</MudTd>
         <MudTd DataLabel="Course Code">@context.CourseCode</MudTd>
@@ -53,6 +151,8 @@
 @code {
     private bool _loading = false;
     private bool striped = true;
+    bool fixed_header = true;
+    bool fixed_footer = false;
     private int TargetPeople = 5;
     private IaCpdRecord[]? iaCpdRecords;
     private MyCpdRecord[]? myCpdRecords;
