@@ -4,104 +4,143 @@
 @using MudBlazor
 
 <PageTitle>My CPD</PageTitle>
+@* 
+<MudContainer MaxWidth="MaxWidth.False" Class="px-6" Style="margin-left: 0;">
+    <MudPaper Elevation="3" Class="pa-6" Style="width: 100%; max-width: 1600px; margin: auto;">
+        <MudText Typo="Typo.h6" Class="mb-6">Continuing Professional Development (CPD) Record</MudText>
 
-<MudContainer Style="margin-left: 0;">
-    <MudPaper Elevation="4" Class="pa-4" Style="width: 100%;">
-        <MudText Typo="Typo.h6" Class="mb-2">Continuing Professional Development (CPD) Record</MudText>
-        <MudGrid Spacing="2">
-
+        <MudGrid GutterSize="3" Class="mb-3 align-items-end">
             <MudItem xs="2">
-
+                <MudText Typo="Typo.h6" Class="text-dark font-weight-bold">Outstanding<br />CPD<br />Overview</MudText>
             </MudItem>
-            <!-- IA Section -->
-            <MudItem xs="6">
-                <MudText Typo="Typo.subtitle2" Class="mb-1" Style="text-align: left;">Insurance Authority (IA)</MudText>
-                <MudText Typo="Typo.body2" Class="text-error" Style="text-align: left;">DUE on 30 Jun 2025</MudText>
+            <MudItem xs="3">
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Insurance Authority (IA)</MudText>
+                <MudText Typo="Typo.body1" Class="text-danger font-weight-bold">DUE on 30 Jun 2025</MudText>
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Total Hours including Compulsory</MudText>
             </MudItem>
-
-            <!-- MPFA Section -->
+            <MudItem xs="1">
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Compulsory#</MudText>
+            </MudItem>
             <MudItem xs="4">
-                <MudText Typo="Typo.subtitle2" Class="mb-1" Style="text-align: left;">Mandatory Provident Fund Schemes
-                    Authority (MPFA)</MudText>
-                <MudText Typo="Typo.body2" Class="text-error" Style="text-align: left;">DUE on 30 Nov 2025</MudText>
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Mandatory Provident Fund Schemes Authority (MPFA)</MudText>
+                <MudText Typo="Typo.body1" Class="text-danger font-weight-bold">DUE on 30 Nov 2025</MudText>
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Total Hours including Core</MudText>
+            </MudItem>
+            <MudItem xs="2">
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Core</MudText>
             </MudItem>
         </MudGrid>
 
-        <MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Dense="true" Class="mt-4">
-            <HeaderContent>
-                <MudTh></MudTh>
-                <MudTh>Total Hours including Compulsory</MudTh>
-                <MudTh>Compulsory#</MudTh>
-                <MudTh>Total Hours including Core</MudTh>
-                <MudTh>Core</MudTh>
-            </HeaderContent>
-            <RowTemplate Context="context">
-                <MudTd DataLabel="Column"><b>@context.Column</b></MudTd>
-                <MudTd DataLabel="Total Hours including Compulsory">@context.IaTotal</MudTd>
-                <MudTd DataLabel="Compulsory#"><span class="@(context.IaComp > 0 ? "text-danger" : "")"><b>@context.IaComp</b></span></MudTd>
-                <MudTd DataLabel="Total Hours including Core">@context.MpfaTotal</MudTd>
-                <MudTd DataLabel="Core"><span class="@(context.MpfaComp > 0 ? "text-danger" : "")"><b>@context.MpfaComp</b></span></MudTd>
-            </RowTemplate>
-        </MudTable>
+        <MudDivider Class="mb-4" />
 
-        @* <MudTable Items="@myCpdRecords" Hover="true" Breakpoint="Breakpoint.None" Dense="true" Class="mt-4">
-            <HeaderContent>
-                <MudTh></MudTh>
-                <MudTh>Total Hours including Compulsory</MudTh>
-                <MudTh>Compulsory#</MudTh>
-                <MudTh>Total Hours including Core</MudTh>
-                <MudTh>Core</MudTh>
-            </HeaderContent>
+        @if (myCpdRecords == null)
+        {
+            <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+        }
+        else
+        {
+            @foreach (var record in myCpdRecords)
+            {
+                <MudGrid GutterSize="3" Class="my-3 align-items-center">
+                    <MudItem xs="2">
+                        <MudText Typo="Typo.body1" Class="font-weight-bold text-primary">@record.Column</MudText>
+                    </MudItem>
+                    <MudItem xs="3">
+                        <MudText Typo="Typo.body1">@record.IaTotal</MudText>
+                    </MudItem>
+                    <MudItem xs="1">
+                        <MudText Typo="Typo.body1" Class="@(record.IaComp > 0 ? "text-danger font-weight-bold" : "")">
+                            @record.IaComp
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="4">
+                        <MudText Typo="Typo.body1">@record.MpfaTotal</MudText>
+                    </MudItem>
+                    <MudItem xs="2">
+                        <MudText Typo="Typo.body1" Class="@(record.MpfaComp > 0 ? "text-danger font-weight-bold" : "")">
+                            @record.MpfaComp
+                        </MudText>
+                    </MudItem>
+                </MudGrid>
+                <MudDivider Class="my-2" />
+            }
+        }
 
+        <MudText Typo="Typo.caption" Class="mt-4" Style="color: #666666">
+            # IA compulsory CPD hours on "Ethics or Regulations"
+        </MudText>
+    </MudPaper>
+</MudContainer> *@
 
-            <!-- Required Row -->
-            <MudTr>
-                <MudTd><b>Required</b></MudTd>
-                <MudTd>@myCpdRecords.RequiredIaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.RequiredIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.RequiredIaComp</b></span>
-                </MudTd>
-                <MudTd>@myCpdRecords.RequiredMpfaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.RequiredMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.RequiredMpfaComp</b></span>
-                </MudTd>
-            </MudTr>
+<br />
 
-            <!-- Earned Row -->
-            <MudTr>
-                <MudTd><b>Earned</b></MudTd>
-                <MudTd>@myCpdRecords.EarnedIaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.EarnedIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.EarnedIaComp</b></span>
-                </MudTd>
-                <MudTd>@myCpdRecords.EarnedMpfaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.EarnedMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.EarnedMpfaComp</b></span>
-                </MudTd>
-            </MudTr>
+<MudContainer MaxWidth="MaxWidth.Large" Class="px-6" Style="margin-left: 0;">
 
-            <!-- Outstanding Row -->
-            <MudTr>
-                <MudTd><b>Outstanding</b></MudTd>
-                <MudTd>@myCpdRecords.OutstandingIaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.OutstandingIaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.OutstandingIaComp</b></span>
-                </MudTd>
-                <MudTd>@myCpdRecords.OutstandingMpfaTotal</MudTd>
-                <MudTd><span
-                        class="@(myCpdRecords.OutstandingMpfaComp > 0 ? "text-danger" : "")"><b>@myCpdRecords.OutstandingMpfaComp</b></span>
-                </MudTd>
-            </MudTr>
+    <MudPaper Elevation="3" Class="pa-6" Style="width: 100%; max-width: 1400px; margin: auto;">
+        <MudText Typo="Typo.h6" Class="mb-4">Continuing Professional Development (CPD) Record</MudText>
 
-        </MudTable> *@
+        <MudGrid GutterSize="3" Class="mb-4 sm:mb-6 align-items-end">
+            <MudItem xs="12" sm="6" md="4" lg="2">
+                <MudText Typo="Typo.h6" Class="text-dark font-weight-bold">Outstanding<br />CPD<br />Overview</MudText>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="4" lg="3">
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Insurance Authority (IA)</MudText>
+                <MudText Typo="Typo.body1" Class="text-danger font-weight-bold">DUE on 30 Jun 2025</MudText>
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Total Hours including Compulsory</MudText>
+            </MudItem>
+            <MudItem xs="6" sm="6" md="4" lg="2">
+                <MudText Typo="Typo.body1" Class="text-primary font-weight-bold">Compulsory#</MudText>
+            </MudItem>
+            <MudItem xs="12" sm="6" md="6" lg="3">
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Mandatory Provident Fund Schemes Authority (MPFA)</MudText>
+                <MudText Typo="Typo.body1" Class="text-danger font-weight-bold">DUE on 30 Nov 2025</MudText>
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Total Hours including Core</MudText>
+            </MudItem>
+            <MudItem xs="6" sm="6" md="6" lg="2">
+                <MudText Typo="Typo.body1" Class="text-warning font-weight-bold">Core</MudText>
+            </MudItem>
+        </MudGrid>
 
+        <MudDivider Class="mb-3" />
 
-        <br />
-        <MudText Typo="Typo.caption" Class="mt-2" Style="color: #666666"># IA compulsory CPD hours on "Ethics or
-            Regulations"</MudText>
+        @if (myCpdRecords == null)
+        {
+            <MudProgressCircular Indeterminate="true" Color="Color.Primary" />
+        }
+        else
+        {
+            @foreach (var record in myCpdRecords)
+            {
+                <MudGrid GutterSize="3" Class="my-3 align-items-center">
+                    <MudItem xs="2">
+                        <MudText Typo="Typo.body1" Class="font-weight-bold text-primary">@record.Column</MudText>
+                    </MudItem>
+                    <MudItem xs="3">
+                        <MudText Typo="Typo.body1">@record.IaTotal</MudText>
+                    </MudItem>
+                    <MudItem xs="1">
+                        <MudText Typo="Typo.body1" Class="@(record.IaComp > 0 ? "text-danger font-weight-bold" : "")">
+                            @record.IaComp
+                        </MudText>
+                    </MudItem>
+                    <MudItem xs="4">
+                        <MudText Typo="Typo.body1">@record.MpfaTotal</MudText>
+                    </MudItem>
+                    <MudItem xs="2">
+                        <MudText Typo="Typo.body1" Class="@(record.MpfaComp > 0 ? "text-danger font-weight-bold" : "")">
+                            @record.MpfaComp
+                        </MudText>
+                    </MudItem>
+                </MudGrid>
+                <MudDivider Class="my-2" />
+            }
+        }
+
+        <MudText Typo="Typo.caption" Class="mt-4" Style="color: #666666">
+            # IA compulsory CPD hours on "Ethics or Regulations"
+        </MudText>
     </MudPaper>
 </MudContainer>
-
 
 <br />
 <MudText Typo="Typo.h6" Class="mb-2"> <b>Your Courses / Activities Overview</b></MudText>
