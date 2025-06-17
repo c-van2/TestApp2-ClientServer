@@ -1,0 +1,159 @@
+@page "/dbobjects"
+@using TestApp2.Client.Services
+@using TestApp2.Shared.DbTracking
+@inject DbObjectService DbService
+@using MudBlazor
+@using System.Text
+@inject IJSRuntime JS
+
+<PageTitle>Database Objects</PageTitle>
+
+<MudPaper Class="pa-4" Elevation="2">
+    <MudText Typo="Typo.h6" Class="mb-2">Database Object Tracker</MudText>
+
+    <MudGrid GutterSize="3">
+        <MudItem xs="12" sm="6" md="3">
+            <MudSelect T="string" Label="Object Type" @bind-Value="newRecord.ObjectType">
+                <MudSelectItem Value="Table">Table</MudSelectItem>
+                <MudSelectItem Value="View">View</MudSelectItem>
+                <MudSelectItem Value="Stored Procedure">Stored Procedure</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField @bind-Value="newRecord.ObjectName" Label="Object Name" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField @bind-Value="newRecord.Project" Label="Project / Module" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudSelect T="string" Label="Environment" @bind-Value="newRecord.Environment">
+                <MudSelectItem Value="Dev">Dev</MudSelectItem>
+                <MudSelectItem Value="Prod">Prod</MudSelectItem>
+                <MudSelectItem Value="Both">Both</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField @bind-Value="newRecord.Description" Label="Purpose / Description" Lines="3" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField @bind-Value="newRecord.SqlScript" Label="SQL Script or Link" Lines="3" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField @bind-Value="newRecord.Dependencies" Label="Dependencies" Lines="2" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField @bind-Value="newRecord.UsedIn" Label="Used In / Affected Pages" Lines="2" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudDatePicker @bind-Date="newRecord.CreatedAt" Label="Created At" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField @bind-Value="newRecord.CreatedBy" Label="Created By" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudDatePicker @bind-Date="newRecord.LastModifiedAt" Label="Last Modified At" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField @bind-Value="newRecord.ModifiedBy" Label="Modified By" />
+        </MudItem>
+        <MudItem xs="12">
+            <MudTextField @bind-Value="newRecord.ChangesNotes" Label="Changes / Notes" Lines="2" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField @bind-Value="newRecord.Version" Label="Version" />
+        </MudItem>
+    </MudGrid>
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-3" OnClick="SaveRecord">Save</MudButton>
+</MudPaper>
+
+<MudPaper Class="pa-4 mt-6" Elevation="2">
+    <MudText Typo="Typo.h6" Class="mb-2">Existing Records</MudText>
+    <MudGrid GutterSize="3" Class="mb-2">
+        <MudItem xs="12" sm="4">
+            <MudSelect T="string" Label="Filter by Project" @bind-Value="filterProject">
+                <MudSelectItem Value="">All</MudSelectItem>
+                @foreach (var p in projects)
+                {
+                    <MudSelectItem Value="@p">@p</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudSelect T="string" Label="Filter by Type" @bind-Value="filterType">
+                <MudSelectItem Value="">All</MudSelectItem>
+                <MudSelectItem Value="Table">Table</MudSelectItem>
+                <MudSelectItem Value="View">View</MudSelectItem>
+                <MudSelectItem Value="Stored Procedure">Stored Procedure</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudSelect T="string" Label="Filter by Env" @bind-Value="filterEnv">
+                <MudSelectItem Value="">All</MudSelectItem>
+                <MudSelectItem Value="Dev">Dev</MudSelectItem>
+                <MudSelectItem Value="Prod">Prod</MudSelectItem>
+                <MudSelectItem Value="Both">Both</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+
+    <MudTable Items="filteredRecords" Hover="true">
+        <HeaderContent>
+            <MudTh>Object</MudTh>
+            <MudTh>Project</MudTh>
+            <MudTh>Env</MudTh>
+            <MudTh>Version</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.ObjectName</MudTd>
+            <MudTd>@context.Project</MudTd>
+            <MudTd>@context.Environment</MudTd>
+            <MudTd>@context.Version</MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <MudButton Variant="Variant.Outlined" Color="Color.Primary" Class="mt-3" OnClick="ExportCsv">Export to Excel</MudButton>
+</MudPaper>
+
+@code {
+    private List<DbObjectRecord> records = new();
+    private DbObjectRecord newRecord = new();
+    private string filterProject = string.Empty;
+    private string filterType = string.Empty;
+    private string filterEnv = string.Empty;
+    private IEnumerable<string> projects => records.Select(r => r.Project).Distinct();
+
+    private IEnumerable<DbObjectRecord> filteredRecords =>
+        records.Where(r => (string.IsNullOrEmpty(filterProject) || r.Project == filterProject)
+                        && (string.IsNullOrEmpty(filterType) || r.ObjectType == filterType)
+                        && (string.IsNullOrEmpty(filterEnv) || r.Environment == filterEnv));
+
+    protected override async Task OnInitializedAsync()
+    {
+        var res = await DbService.GetRecordsAsync();
+        if (res != null)
+            records = res;
+    }
+
+    private async Task SaveRecord()
+    {
+        newRecord.CreatedAt = DateTime.UtcNow;
+        newRecord.LastModifiedAt = DateTime.UtcNow;
+        if (await DbService.AddRecordAsync(newRecord))
+        {
+            records.Add(newRecord);
+            newRecord = new();
+        }
+    }
+
+    private async Task ExportCsv()
+    {
+        var csv = new StringBuilder();
+        csv.AppendLine("ObjectType,ObjectName,Project,Environment,Version");
+        foreach (var r in filteredRecords)
+        {
+            csv.AppendLine($"{r.ObjectType},{r.ObjectName},{r.Project},{r.Environment},{r.Version}");
+        }
+        await JS.InvokeVoidAsync("downloadFile", "dbobjects.csv", csv.ToString());
+    }
+}
