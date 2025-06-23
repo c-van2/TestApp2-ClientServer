@@ -7,14 +7,15 @@ builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(
+builder.Services.AddSwaggerGen(c =>
+{
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
         Title = "My First Swagger API",
         Version = "v1",
         Description = "這是 Vanessa 寫的超可愛 API 🍰",
     });
-);
+});
 
 var app = builder.Build();
 
