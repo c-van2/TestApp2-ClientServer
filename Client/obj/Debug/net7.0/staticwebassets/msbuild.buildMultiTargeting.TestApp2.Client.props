@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\TestApp2.Client.props" />
-</Project>
